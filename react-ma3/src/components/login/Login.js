@@ -1,8 +1,14 @@
 import React from "react";
 import LoginForm from "./LoginForm";
+import Heading from "../Heading";
 
 function Login() {
-  return <LoginForm />;
+  return (
+    <>
+      <Heading />
+      <LoginForm />
+    </>
+  );
 }
 
 export default Login;

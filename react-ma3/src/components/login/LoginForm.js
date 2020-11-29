@@ -1,27 +1,40 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  Username: yup.string().required("Please enter a username"),
+  Password: yup
+    .string()
+    .required("Please enter a password")
+    .min(4, "Please enter a password with minimum 4 characters."),
+});
 
 function LoginForm() {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
   const onSubmit = (data) => console.log(data);
-  console.log(errors);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
         type="text"
-        placeholder="Username"
         name="Username"
-        ref={register({ required: true })}
-      />{" "}
-      {errors.Username && <p>First name is required</p>}
+        placeholder="Username"
+        ref={register}
+      />
+      <p>{errors.Username?.message}</p>
+
       <input
         type="password"
-        placeholder="password"
         name="Password"
-        ref={register({ required: true, min: 4 })}
+        placeholder="Password"
+        ref={register}
       />
-      {errors.Password && <p>A password is required</p>}
+      <p>{errors.Password?.message}</p>
+
       <input type="submit" />
     </form>
   );

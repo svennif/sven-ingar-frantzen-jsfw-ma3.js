@@ -1,17 +1,6 @@
-import Heading from './components/Heading';
-import HomeContent from './components/HomeContent';
-import LoginForm from './components/LoginForm';
-import NewsList from './components/NewsList';
-
+import Layout from "./components/Layout";
 function App() {
-  return (
-    <div className="App">
-      <Heading content="This is a title"/>
-      <HomeContent />
-      <LoginForm />
-      <NewsList />
-    </div>
-  );
+  return <Layout />;
 }
 
 export default App;

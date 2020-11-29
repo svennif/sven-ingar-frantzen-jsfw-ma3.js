@@ -7,8 +7,8 @@ function Home() {
     return (
         <div>
             <Heading content='HOME'/>
-            <HomeContent content='This is a paragraph'/>
-            <HomeContent content='This is also a paragraph'/>
+            <HomeContent children='This is a paragraph'/>
+            <HomeContent children='This is also a paragraph'/>
         </div>
     )
 }
